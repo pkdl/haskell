@@ -7,16 +7,16 @@ tail' [] = []
 tail' (_:xs) = xs
 
 take' :: Int -> [a] -> [a]
-take' n a | n == 1 = [head a]
-          | otherwise = (head a):(take' (n-1) (tail' a))
+take' n a | n == 1 = [head' a]
+          | otherwise = (head' a):(take' (n-1) (tail' a))
 
 drop' :: Int -> [a] -> [a]
-drop' n a = if n == 1 then tail a else drop (n-1) (tail' a)
+drop' n a = if n == 1 then tail' a else drop' (n-1) (tail' a)
 
 filter' :: (a -> Bool) -> [a] -> [a]
 filter' f [] = []
-filter' f xs | (f (head' xs)) == True = (head' xs) : (filter' f (tail' xs))
-             | (f (head' xs)) == False = filter' f (tail' xs)
+filter' f xs | (f (head' xs)) = (head' xs) : (filter' f (tail' xs))
+             | (f (head' xs)) = filter' f (tail' xs)
 
 foldl' :: (a -> b -> a) -> a -> [b] -> a
 foldl' f z [] = z
